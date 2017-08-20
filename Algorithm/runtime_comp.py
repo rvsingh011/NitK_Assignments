@@ -16,6 +16,6 @@ for x in range(0, 11):
     list_of_array.append(temp_list)
 
 for x in range(0, 11):
-    
+
 # # print(float(sum(bubble_running_time))/len(bubble_running_time))
 # # print(bubble_running_time)
