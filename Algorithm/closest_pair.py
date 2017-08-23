@@ -1,3 +1,4 @@
+# with user Input
 from math import sqrt
 import time
 
@@ -19,6 +20,18 @@ def brute_force(points, n):
                     pos2 = y
     return pos1, pos2, least
 
+
+def optimal_pair(points, n):
+    if n <= 3:
+        return brute_force(points, n)
+    else:
+        k = [x[1] for x in sorted(points.items(), key=lambda x: x[1])]
+        mid = int(n/2)
+
+
+
+
+
 if __name__ == "__main__":
     dic = {}
     print("enter the number of points")
@@ -26,6 +39,6 @@ if __name__ == "__main__":
     for x in range(0, number):
         dic[x] = input().strip().split(",")
     t0 = time.time()
-    q, w, r = brute_force(dic, number)
+    q, w, r = optimal_pair(dic, number)
     t1 = time.time()
     print(dic[q], dic[w], r, (t1-t0)/3600)
