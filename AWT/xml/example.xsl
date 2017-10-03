@@ -13,6 +13,7 @@
         </head>
         <table>
             <tr>
+
                 <xsl:for-each select="ads/add[1]/*">
                     <td>
                         <xsl:value-of select="local-name()"/>
@@ -22,34 +23,67 @@
 
             <xsl:for-each select="ads/*">
                 <tr>
+
                     <xsl:for-each select="./*">
-                        <td>
-                            <xsl:if test="not(*)">
-                                <xsl:if test="name() = 'genre'">
+
+                        <xsl:if test="not(*)">
+
+                            <xsl:if test="name() = 'genre'">
+
+                                <xsl:variable name="mygen">
+
                                     <xsl:value-of select="node()"/>
+                                    <!-- mygen = pop-->
+                                </xsl:variable>
+
+                                <xsl:if test="$mygen='Rock'">
+                                    <td bgcolor="green"><xsl:value-of select="node()"/></td>
                                 </xsl:if>
-                                <xsl:if test="not(name() = 'genre')">
-                                    <xsl:value-of select="node()"/>
+
+                                <xsl:if test="$mygen='classical'">
+                                    <td bgcolor="yellow"><xsl:value-of select="node()"/></td>
                                 </xsl:if>
+
+                                <xsl:if test="$mygen='instrumental'">
+                                    <td bgcolor="blue"><xsl:value-of select="node()"/></td>
+                                </xsl:if>
+
                             </xsl:if>
-                            <xsl:if test="./*">
-                                    <xsl:for-each select="*">
-                                        <xsl:if test="not(*)">
+
+                            <xsl:if test="not(name() = 'genre')">
+                                <td>
+                                    <xsl:value-of select="node()"/>
+                                </td>
+                            </xsl:if>
+                        </xsl:if>
+
+                        <xsl:if test="./*">
+                            <td>
+
+                                <xsl:for-each select="*">
+
+                                    <xsl:if test="not(*)">
+
                                         <xsl:value-of select="local-name()"/>:
+
                                         <xsl:value-of select="node()"/><br/>
-                                        </xsl:if>
-                                        <xsl:for-each select="*">
-                                            <xsl:value-of select="local-name()"/>:
-                                            <xsl:value-of select="node()"/><br/>
-                                        </xsl:for-each>
+                                    </xsl:if>
+
+                                    <xsl:for-each select="*">
+
+                                        <xsl:value-of select="local-name()"/>:
+
+                                        <xsl:value-of select="node()"/><br/>
                                     </xsl:for-each>
-                            </xsl:if>
-                            <!-- <xsl:if test="./*">
+                                </xsl:for-each>
+                            </td>
+                        </xsl:if>
+                        <!-- <xsl:if test="./*">
                                 <xsl:for-each select="./*">
                                     <xsl:value-of select="node()"/>
                                 </xsl:for-each>
                             </xsl:if> -->
-                        </td>
+
                     </xsl:for-each>
                 </tr>
             </xsl:for-each>

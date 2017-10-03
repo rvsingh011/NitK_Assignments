@@ -34,7 +34,7 @@
 
   <add id="2">
     <band>Karnataka</band>
-    <genre>Classical</genre>
+    <genre>classical</genre>
     <performers>
       <performer>
         <firstname>pooja</firstname>
