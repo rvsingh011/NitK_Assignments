@@ -16,8 +16,7 @@
         <role>dancer</role>
       </performer>
     </performers>
-    <date>
-    </date>
+    <date>15/23/19</date>
     <time>
       <showtime>4.30</showtime>
       <showtime>5.30</showtime>
@@ -55,9 +54,9 @@
       <showtime>9.30</showtime>
     </time>
     <price>
-      <type id="silver">1000</type>
-      <type id="gold">2000</type>
-      <type id="diamond">4000</type>
+      <silver>1000</silver>
+      <gold>2000</gold>
+      <diamond>4000</diamond>
     </price>
     <discount>50%</discount>
     <sellerInfo>
