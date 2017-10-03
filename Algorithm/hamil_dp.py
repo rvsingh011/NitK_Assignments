@@ -1,5 +1,5 @@
 import copy
-graph_nodes = [1,2,3,4,5]
+graph_nodes = [1,2,3,4]
 paths = []
 
 
@@ -50,7 +50,7 @@ def hamiltonian():
 
 
 if __name__ == "__main__":
-    graph = {1: [4, 5], 2: [5], 3: [4], 4: [1, 3, 5], 5: [1, 2, 4]}
+    graph = {1: [2,3], 2: [1], 3: [1,4], 4: [3]}
     hamiltonian()
 
     # graph1 = copy.deepcopy(graph)

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="example.xsl"?>
+<ads>
+  <add id="1">
+    <band>Ravi</band>
+    <genre>Rock</genre>
+    <performers>
+      <performer>
+        <firstname>Ravi</firstname>
+        <lastname>Singh</lastname>
+        <role>guatrist</role>
+      </performer>
+      <performer>
+        <firstname>smjt</firstname>
+        <lastname>hello</lastname>
+        <role>dancer</role>
+      </performer>
+    </performers>
+    <date>
+    </date>
+    <time>
+      <showtime>4.30</showtime>
+      <showtime>5.30</showtime>
+      <showtime>9.30</showtime>
+    </time>
+    <price>5000</price>
+    <discount>50%</discount>
+    <sellerInfo>
+      <name>Shelu</name>
+      <email>shelu@gmail.com</email>
+      <phoneNo>9760555555</phoneNo>
+      <address>Heart</address>
+    </sellerInfo>
+  </add>
+
+  <add id="2">
+    <band>Karnataka</band>
+    <genre>Classical</genre>
+    <performers>
+      <performer>
+        <firstname>pooja</firstname>
+        <lastname>Singh</lastname>
+        <role>dancer</role>
+      </performer>
+      <performer>
+        <firstname>swati</firstname>
+        <lastname>ayir</lastname>
+        <role>singer</role>
+      </performer>
+    </performers>
+    <date>5/10/21</date>
+    <time>
+      <showtime>4.30</showtime>
+      <showtime>5.30</showtime>
+      <showtime>9.30</showtime>
+    </time>
+    <price>
+      <type id="silver">1000</type>
+      <type id="gold">2000</type>
+      <type id="diamond">4000</type>
+    </price>
+    <discount>50%</discount>
+    <sellerInfo>
+      <name>Ravi</name>
+      <email>ravi@gmail.com</email>
+      <phoneNo>9760555555</phoneNo>
+      <address>Heart</address>
+    </sellerInfo>
+  </add>
+</ads>
