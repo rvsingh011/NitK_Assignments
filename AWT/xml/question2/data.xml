@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="q2.xsl"?>
+<concerts>
+<concert>
+    <name>NITK band</name>
+    <genre>pop</genre>
+    <performers>
+       <performer>
+          <firstname>Ravi</firstname>
+          <lastname>Singh</lastname>
+          <role>drums</role>
+       </performer>
+       <performer>
+          <firstname>shikha</firstname>
+          <lastname>Singh</lastname>
+          <role>flute</role>
+       </performer>
+    </performers>
+    <date>
+      <month>April</month>
+      <day>24</day>
+      <year>2018</year>
+    </date>
+    <time>
+        <show>9:00</show>
+        <show>2:00</show>
+        <show>5:00</show>
+    </time>
+    <place>
+        <venue>KBC Indoor Stadium</venue>
+        <adress>
+          <city>Mangalore</city>
+          <street>Balmatta Circle</street>
+          <district>mangalore</district>
+          <state>Karnataka</state>
+        </adress>
+        <contact>8000880009</contact>
+    </place>
+    <ticket>
+        <gold>250</gold>
+        <silver>150</silver>
+        <ordinary>75</ordinary>
+    </ticket>
+    <sellerinfo>
+        <name>Radio Mirchi</name>
+        <email>ranjan23@gmail.com</email>
+        <phone>7000870009</phone>
+        <adress>Surathkal PG-25</adress>
+    </sellerinfo>
+</concert>
+
+
+<concert>
+    <name>NITW band</name>
+    <genre>classical</genre>
+    <performers>
+       <performer>
+          <firstname>vinod</firstname>
+          <lastname>Kumar</lastname>
+          <role>drums</role>
+       </performer>
+       <performer>
+          <firstname>raju</firstname>
+          <lastname>Reddy</lastname>
+          <role>flute</role>
+       </performer>
+    </performers>
+    <date>
+      <month>April</month>
+      <day>18</day>
+      <year>2018</year>
+    </date>
+    <time>
+        <show>9:00</show>
+        <show>2:00</show>
+        <show>5:00</show>
+    </time>
+    <place>
+        <venue>kakathiya Function Hall</venue>
+        <adress>
+          <city>Warangal</city>
+          <street>KT Road</street>
+          <district>Warangal</district>
+          <state>Karnataka</state>
+        </adress>
+        <contact>8000880009</contact>
+    </place>
+    <ticket>
+        <gold>200</gold>
+        <silver>100</silver>
+        <ordinary>50</ordinary>
+    </ticket>
+    <sellerinfo>
+        <name>kaushik</name>
+        <email>kaushik23@gmail.com</email>
+        <phone>7000560009</phone>
+        <adress>Warangal BS-54</adress>
+    </sellerinfo>
+</concert>
+
+
+<concert>
+    <name>NITT band</name>
+    <genre>instrumental</genre>
+    <performers>
+       <performer>
+          <firstname>Adityta</firstname>
+          <lastname>Kumar</lastname>
+          <role>drums</role>
+       </performer>
+       <performer>
+          <firstname>Naveen</firstname>
+          <lastname>Reddy</lastname>
+          <role>flute</role>
+       </performer>
+    </performers>
+    <date>
+      <month>June</month>
+      <day>14</day>
+      <year>2018</year>
+    </date>
+    <time>
+        <show>9:00</show>
+        <show>2:00</show>
+        <show>5:00</show>
+    </time>
+    <place>
+        <venue>Trichy</venue>
+        <adress>
+          <city>Trichy</city>
+          <street>KSD Road</street>
+          <district>Tirvanthapuram</district>
+          <state>Tamilnadu</state>
+        </adress>
+        <contact>8034880009</contact>
+    </place>
+    <ticket>
+        <gold>160</gold>
+        <silver>80</silver>
+        <ordinary>40</ordinary>
+    </ticket>
+    <sellerinfo>
+        <name>raghu</name>
+        <email>raghu23@gmail.com</email>
+        <phone>70034560009</phone>
+        <adress>Trichy ER-54</adress>
+    </sellerinfo>
+</concert>
+</concerts>

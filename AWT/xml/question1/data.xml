@@ -16,7 +16,8 @@
         <role>dancer</role>
       </performer>
     </performers>
-    <date>15/23/19</date>
+    <date>15/04/19</date>
+    <location>Banglore</location>
     <time>
       <showtime>4.30</showtime>
       <showtime>5.30</showtime>
@@ -46,8 +47,9 @@
         <lastname>ayir</lastname>
         <role>singer</role>
       </performer>
-    </performers>
+  </performers>
     <date>5/10/21</date>
+    <location>Delhi</location>
     <time>
       <showtime>4.30</showtime>
       <showtime>5.30</showtime>

@@ -4,9 +4,10 @@
         <head>
             <style>
                 table,
-                td,
-                th {
-                    border: 1px solid black;
+                th, td {
+                    padding: 8px;
+                    text-align: left;
+                    border-bottom: 1px solid #ddd;
                 }
 
             </style>
@@ -15,9 +16,9 @@
             <tr>
 
                 <xsl:for-each select="ads/add[1]/*">
-                    <td>
+                    <th>
                         <xsl:value-of select="local-name()"/>
-                    </td>
+                    </th>
                 </xsl:for-each>
             </tr>
 
