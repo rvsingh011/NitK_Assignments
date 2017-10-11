@@ -2,7 +2,6 @@ import numpy as np
 
 
 def DFT_slow(x):
-    """Compute the discrete Fourier Transform of the 1D array x"""
     x = np.asarray(x, dtype=float)      #convert into array
     N = x.shape[0]                      #find dimension of array
     n = np.arange(N)                    #create a array in range(N)
@@ -12,7 +11,6 @@ def DFT_slow(x):
 
 
 def FFT(x):
-    """A recursive implementation of the 1D Cooley-Tukey FFT"""
     x = np.asarray(x, dtype=float)
     N = x.shape[0]
 
@@ -26,7 +24,9 @@ def FFT(x):
         factor = np.exp(-2j * np.pi * np.arange(N) / N)
         return np.concatenate([X_even + factor[:int(N/2)] * X_odd,
                                X_even + factor[int(N/2):] * X_odd])
-x = np.random.random(1024)
+x = [2,4,5,6]
 
-print(np.allclose(FFT(x), np.fft.fft(x)))
 print(FFT(x))
+print("\n")
+print(np.fft.fft(x))
+# print(FFT(x))
