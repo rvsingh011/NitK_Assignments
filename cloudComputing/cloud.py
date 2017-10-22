@@ -1,16 +1,31 @@
 import random
 import time
 from math import floor
-class PyMachine:
+import threading
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+from matplotlib import style
 
+style.use('fivethirtyeight')
+fig = plt.figure()
+ax1 = fig.add_subplot(1, 1, 1)
+
+iterations = [0]
+bandwidth_vm1 = [0]
+bandwidth_vm2 = [0]
+bandwidth_vm3 = [0]
+bandwidth_vm4 = [0]
+
+
+class PyMachine:
     def __init__(self, cpu, memory, network):
         self.cpu = cpu
         self.memory = memory
         self.network = network
         self.cpu_list = []
-        self.memory_list=[]
-        self.weight_list=[]
-        self.network_list=[]
+        self.memory_list = []
+        self.weight_list = []
+        self.network_list = []
         self.virtual_machines = 4
         self.vm_dict = {}
         self.average_bw = 0
@@ -21,7 +36,6 @@ class PyMachine:
         self.create_wight()
         self.create_network()
         self.start()
-
 
     def start(self):
         count = 1
@@ -40,9 +54,9 @@ class PyMachine:
 
     def create_vm(self):
         # create cpu
-        b = random.randint(2, self.cpu-2)
+        b = random.randint(2, self.cpu - 2)
         a = random.randint(1, b - 1)
-        c = random.randint(b + 1, self.cpu-1)
+        c = random.randint(b + 1, self.cpu - 1)
         self.cpu_list = [a, b - a, c - b, self.cpu - c]
         # print(self.cpu_list)
 
@@ -82,7 +96,7 @@ class PyMachine:
     def calculate_normalized_bandwidth(self):
         """Adding Normalized Bandwidth"""
         for index in range(self.virtual_machines):
-            self.vm_dict[index]["n_bw"] = self.vm_dict[index]["network"]/self.vm_dict[index]["weight"]
+            self.vm_dict[index]["n_bw"] = self.vm_dict[index]["network"] / self.vm_dict[index]["weight"]
 
     def calculate_average_bandwidth(self):
         """Calculating Average bandwidth"""
@@ -101,25 +115,17 @@ class PyMachine:
                 self.weak_vm.append(index)
             else:
                 self.strong_vm.append(index)
-
         print("list of strong and weak vms", self.strong_vm, self.weak_vm, sep="\n")
-
 
     def choose_delta(self):
         return floor((max(self.network_list) - min(self.network_list)) / self.virtual_machines)
 
-        # max_band, min_band = 0,1000
-        # for key, values in self.vm_dict.items():
-        #     if values["n_bw"] > max_band:
-        #         max_band = values["n_bw"]
-        #     if values["n_bw"] < min_band:
-        #         min_band = values["n_bw"]
-        # return (max_band - min_band)/self.virtual_machines
-
-
-
-
     def adjust_bandwidth(self):
+        global iterations
+        global bandwidth_vm1
+        global bandwidth_vm2
+        global bandwidth_vm3
+        global bandwidth_vm4
         delta = self.choose_delta()
         bandwidth_gain = 0
         print(delta)
@@ -128,32 +134,42 @@ class PyMachine:
             if self.network_list[strong_vm] - delta > 5:
                 bandwidth_gain += delta
                 self.network_list[strong_vm] -= delta
-            # else:
-            #     diff = delta + (self.network_list[strong_vm] - delta)
+                # else:
+                #     diff = delta + (self.network_list[strong_vm] - delta)
         print(self.network_list)
         for weak_vm in self.weak_vm:
             self.network_list[weak_vm] += floor(bandwidth_gain / len(self.weak_vm))
         print(self.network_list, "end")
+        iterations.append(iterations[-1] + 1)
+        bandwidth_vm1.append(self.network_list[0])
+        bandwidth_vm2.append(self.network_list[1])
+        bandwidth_vm3.append(self.network_list[2])
+        bandwidth_vm4.append(self.network_list[3])
 
 
-
-
-        
-    def change_bandwidth(self, new_bandwidth):
-        print(new_bandwidth)
-        self.network = new_bandwidth
-        self.create_network()
-        self.create_vm_dict()
-        self.calculate_normalized_bandwidth()
-        self.calculate_average_bandwidth()
-        self.divide_vms()
-        self.adjust_bandwidth()
-
-
-if __name__ == "__main__":
+def main():
+    print("I have also started")
     physical_machine = PyMachine(5, 50, 100)
 
 
-    # for x in range(5):
-    #     time.sleep(60)
-    #     physical_machine.change_bandwidth(random.randint(100, 200))
+def animate(i):
+    global iterations
+    global bandwidth_vm1
+    global bandwidth_vm2
+    global bandwidth_vm3
+    global bandwidth_vm4
+    ax1.clear()
+    ax1.plot(iterations, bandwidth_vm1)
+    ax1.plot(iterations, bandwidth_vm2)
+    ax1.plot(iterations, bandwidth_vm3)
+    ax1.plot(iterations, bandwidth_vm4)
+
+
+if __name__ == "__main__":
+    main_thread = threading.Thread(name="main", target= main)
+    main_thread.start()
+    ani = animation.FuncAnimation(fig, animate, interval=1000)
+    plt.show()
+    print(threading.enumerate())
+
+
