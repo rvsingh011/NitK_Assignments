@@ -8,13 +8,19 @@ from matplotlib import style
 
 style.use('fivethirtyeight')
 fig = plt.figure()
-ax1 = fig.add_subplot(1, 1, 1)
+ax1 = plt.subplot2grid((8, 1), (0, 0), rowspan=3)
+ax2 = plt.subplot2grid((8, 1), (4, 0), rowspan=3)
 
-iterations = [0]
-bandwidth_vm1 = [0]
-bandwidth_vm2 = [0]
-bandwidth_vm3 = [0]
-bandwidth_vm4 = [0]
+cons_bandwidth_vm1 = []
+cons_bandwidth_vm2 = []
+cons_bandwidth_vm3 = []
+cons_bandwidth_vm4 = []
+
+iterations = []
+bandwidth_vm1 = []
+bandwidth_vm2 = []
+bandwidth_vm3 = []
+bandwidth_vm4 = []
 
 
 class PyMachine:
@@ -40,10 +46,10 @@ class PyMachine:
     def start(self):
         count = 1
         while 1:
-            if count % 3 == 0:
+            if count % 20 == 0:
                 self.network = random.randint(100, 200)
                 self.create_network()
-            time.sleep(5)
+            time.sleep(2)
             print(self.network)
             self.create_vm_dict()
             self.calculate_normalized_bandwidth()
@@ -69,11 +75,35 @@ class PyMachine:
         # print(self.memory_list)
 
     def create_network(self):
+        global cons_bandwidth_vm1
+        global cons_bandwidth_vm2
+        global cons_bandwidth_vm3
+        global cons_bandwidth_vm4
+
+        global iterations
+        global bandwidth_vm1
+        global bandwidth_vm2
+        global bandwidth_vm3
+        global bandwidth_vm4
         # create network
         b = random.randint(2, self.network - 2)
         a = random.randint(1, b - 1)
         c = random.randint(b + 1, self.network - 1)
         self.network_list = [a, b - a, c - b, self.network - c]
+
+        if iterations:
+            iterations.append(iterations[-1] + 1)
+        else:
+            iterations.append(0)
+        bandwidth_vm1.append(0)
+        bandwidth_vm2.append(0)
+        bandwidth_vm3.append(0)
+        bandwidth_vm4.append(0)
+
+        cons_bandwidth_vm1.append(self.network_list[0])
+        cons_bandwidth_vm2.append(self.network_list[1])
+        cons_bandwidth_vm3.append(self.network_list[2])
+        cons_bandwidth_vm4.append(self.network_list[3])
         # print(self.network_list)
 
     def create_wight(self):
@@ -140,11 +170,17 @@ class PyMachine:
         for weak_vm in self.weak_vm:
             self.network_list[weak_vm] += floor(bandwidth_gain / len(self.weak_vm))
         print(self.network_list, "end")
+
         iterations.append(iterations[-1] + 1)
         bandwidth_vm1.append(self.network_list[0])
         bandwidth_vm2.append(self.network_list[1])
         bandwidth_vm3.append(self.network_list[2])
         bandwidth_vm4.append(self.network_list[3])
+
+        cons_bandwidth_vm1.append(cons_bandwidth_vm1[-1])
+        cons_bandwidth_vm2.append(cons_bandwidth_vm2[-1])
+        cons_bandwidth_vm3.append(cons_bandwidth_vm3[-1])
+        cons_bandwidth_vm4.append(cons_bandwidth_vm4[-1])
 
 
 def main():
@@ -158,11 +194,24 @@ def animate(i):
     global bandwidth_vm2
     global bandwidth_vm3
     global bandwidth_vm4
+
     ax1.clear()
+    ax2.clear()
+
+    ax1.set_ylabel("Bandwith")
+    ax1.set_title("Without Fair Scheduling")
     ax1.plot(iterations, bandwidth_vm1)
     ax1.plot(iterations, bandwidth_vm2)
     ax1.plot(iterations, bandwidth_vm3)
     ax1.plot(iterations, bandwidth_vm4)
+
+    ax2.set_xlabel("Iterations")
+    ax2.set_ylabel("Bandwidth")
+    ax2.set_title("With Fair Scheduling")
+    ax2.plot(iterations, cons_bandwidth_vm1)
+    ax2.plot(iterations, cons_bandwidth_vm2)
+    ax2.plot(iterations, cons_bandwidth_vm3)
+    ax2.plot(iterations, cons_bandwidth_vm4)
 
 
 if __name__ == "__main__":
