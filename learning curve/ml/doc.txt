@@ -1,0 +1,20 @@
+numpy.random.randint(low, high=None, size=None)
+    the it is semi close [low, high) generate a large number of number use size
+    numpy.random.randint(0, 5, size=(3)) select 3 random number
+    for 2 d size =(3,4) if high limit is not given then it will take 0, low as range
+    to generate 0 2d array.
+    numpy.random.randint(1, size=(row, column)
+
+numpy.seed(7)
+    Set some seed value so that random number can be generated again
+
+numpy.random.rand(5)
+    Generate 5 random number if seed is set first it will result in same value again and again
+
+numpy.zeros(shape, dtype=float, order='C')
+    default type = float
+    share is row and column
+    numpy.zeros((3,2), dtype=numpy.int)
+
+
+[:,:] = describe slicing operation only but first is row and second id column:
