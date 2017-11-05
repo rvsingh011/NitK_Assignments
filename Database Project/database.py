@@ -1,36 +1,49 @@
 from datetime import datetime
 import threading
 from threading import Thread
+import time
 
 
 class Database(object):
-    x = {"timestamp": datetime.now(), "value": 5}
-    y = {"timestamp": datetime.now(), "value": 10}
-    z = {"timestamp": datetime.now(), "value": 30}
+    x = {"timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "value": 5}
+    y = {"timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "value": 10}
+    z = {"timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "value": 30}
 
-    def commit(self):
+    @staticmethod
+    def commit(item_x, item_y, item_z, variable_used):
         lock = threading.Lock()
         lock.acquire()
-        
-        for variable in self.variable_used:
+        count = 0
+        for variable in variable_used:
             if variable == "x":
-                self.x['timestamp'] == Database.x['timestamp']
-                print(Database.x)
-                Database.x = dict(self.x)
+                if item_x['timestamp'] == Database.x['timestamp']:
+                    Database.x['timestamp'] = item_x['timestamp']
+                    count += 1
             if variable == "y":
-                self.y['timestamp'] == Database.y['timestamp']
-                Database.y = dict(self.y)
+                if item_y['timestamp'] == Database.y['timestamp']:
+                    Database.y['timestamp'] = item_y['timestamp']
+                    count += 1
             if variable == "z":
-                self.z['timestamp'] == Database.z['timestamp']
-                Database.z = dict(self.z)
-                
-        lock.release()
+                if item_z['timestamp'] == Database.z['timestamp']:
+                    Database.z['timestamp'] = item_z['timestamp']
+                    count += 1
+
+            if len(variable_used) == count:
+                lock.release()
+                return 1
+            else:
+                lock.release()
+                return 0
 
 
-class Child(Database):
+class Child:
 
     def __init__(self):
-        self.variable_used = ['x']
+        self.variable_used = []
+        self.database = Database()
+        self.x = dict(self.database.x)
+        self.y = dict(self.database.y)
+        self.z = dict(self.database.z)
 
     def parse(self, transaction):
         operations = transaction.split(" ")
@@ -47,19 +60,31 @@ class Child(Database):
         pass
 
     def write(self, item):
+        count = 1
         if item == "x":
-            self.x['timestamp'] = Database.x['timestamp'] = datetime.now()
+            self.variable_used.append("x")
+            self.x['timestamp'] = self.database.x['timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         elif item == "y":
-            self.y['timestamp'] = Database.y['timestamp'] = datetime.now()
+            if count == 1:
+                count += 1
+                time.sleep(5)
+            self.variable_used.append("y")
+            self.y['timestamp'] = self.database.y['timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         elif item == "z":
-            self.z['timestamp'] = Database.z['timestamp'] = datetime.now()
+            self.variable_used.append("z")
+            self.z['timestamp'] = self.database.z['timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
     def commit(self):
-        super(Child, self).commit()
+        status = self.database.commit(self.x, self.y, self.z, self.variable_used)
+        if status == 1:
+            print("transaction successful")
+        elif status == 0:
+            print("Transaction Unsuccessful")
+
 
 if __name__ == "__main__":
-    str1 = "r,x r,y r,z"
-    str2 = "r,x w,z r,z"
+    str1 = "w,z w,y r,z c,end"
+    str2 = "r,x w,z r,z c,end"
     x = Thread(target=Child().parse, args=(str1,)).start()
     y = Thread(target=Child().parse, args=(str2,)).start()
 
