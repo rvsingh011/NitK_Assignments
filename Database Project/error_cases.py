@@ -4,6 +4,8 @@ from threading import Thread
 import time
 
 
+# Considering mysql where one transition can have a single commit only
+
 class Database(object):
     """
     This class Simulate the behaviour of a real Disk Database.
@@ -14,49 +16,50 @@ class Database(object):
     """
 
     x = {
-        "read_timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3], "value": 5,
-        "write_timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
+        "read_timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "value": 5,
+        "write_timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     }
     y = {
-        "read_timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3], "value": 10,
-        "write_timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
+        "read_timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "value": 10,
+        "write_timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     }
     z = {
-        "read_timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3], "value": 30,
-        "write_timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
+        "read_timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "value": 30,
+        "write_timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     }
 
     @staticmethod
     def commit(item_x, item_y, item_z, variable_used):
         """Simulate the Real Database commit Operation"""
-        
-        lock = threading.Lock()  # Make lock object
 
-        # Not locking Individual Item as shown in error_case because restarting a atmost complete
-        # transaction is more costlier than stoping a transaction for few seconds
-        # Acquire Lock
-        lock.acquire()
-        # Count variables are
-        count = 0
+        lock = threading.Lock()  # Make lock object
+        # lock.acquire()  # Acquire Lock
+        count = 0  # Count variables are
         for variable in variable_used:
             if variable == "x":
                 if item_x['write_timestamp'] == Database.x['write_timestamp']:
-                    Database.x['write_timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
+                    lock.acquire()
+                    Database.x['write_timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                     count += 1
+                    lock.release()
             if variable == "y":
                 if item_y['write_timestamp'] == Database.y['write_timestamp']:
-                    Database.y['write_timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
+                    lock.acquire()
+                    Database.y['write_timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                     count += 1
+                    lock.release()
             if variable == "z":
                 if item_z['write_timestamp'] == Database.z['write_timestamp']:
-                    Database.z['write_timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
+                    lock.acquire()
+                    Database.z['write_timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                    lock.release()
                     count += 1
-        # Does Every comparision is done successful way.
+
         if len(variable_used) == count:
-            lock.release()
+            # lock.release()
             return 1
         else:
-            lock.release()
+            # lock.release()
             return 0
 
 
@@ -82,6 +85,7 @@ class Client:
 
     def parse(self, transaction):
         """This function parse the transaction passed as string"""
+
         operations = transaction.split(" ")
         for individual_operation in operations:
             operation, item = individual_operation.split(',')
@@ -94,12 +98,7 @@ class Client:
 
     def read(self, item):
         """This function simulate the read operation on client side. """
-        if item == "x":
-            self.x['read_timestamp'] = self.database.x['read_timestamp'] = self.time_stamp
-        elif item == "y":
-            self.y['read_timestamp'] = self.database.y['read_timestamp'] = self.time_stamp
-        elif item == "z":
-            self.z['read_timestamp'] = self.database.z['read_timestamp'] = self.time_stamp
+        pass
 
     def write(self, item):
         """This function simulate the write operation on client side. """
@@ -111,7 +110,6 @@ class Client:
             # Stop First client and simulate a network delay
             if count == 1:
                 count += 1
-                print(threading.current_thread().getName())
                 time.sleep(5)
             self.variable_used.append("y")
             self.y['write_timestamp'] = self.database.y['write_timestamp'] = self.time_stamp
@@ -130,22 +128,23 @@ class Client:
 
 if __name__ == "__main__":
     """The main Method"""
+
     # First Transaction in string form.
-    str1 = "w,z w,y r,z c,end"
+    str1 = "w,x c,end"
     # Second Transaction in String form.
-    str2 = "r,x w,z r,z c,end"
+    str2 = "w,x c,end"
 
     # Create first Client as a Thread
     first_Client = Thread(
         name="Client Process 1",
-        target=Client(datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]).parse,
+        target=Client(datetime.now().strftime('%Y-%m-%d %H:%M:%S')).parse,
         args=(str1,)
     ).start()
 
     # Create Second Client as a Thread
     Second_Client = Thread(
         name="Client Process 2",
-        target=Client(datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]).parse,
+        target=Client(datetime.now().strftime('%Y-%m-%d %H:%M:%S')).parse,
         args=(str2,)
     ).start()
 
