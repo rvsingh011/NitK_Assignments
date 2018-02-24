@@ -1,0 +1,8 @@
+nop
+(bad)
+sarl
+add
+add
+add
+add
+xchg

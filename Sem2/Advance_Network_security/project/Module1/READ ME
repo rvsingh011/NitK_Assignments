@@ -1,0 +1,4 @@
+In this module we are make the dataset from 100 malware and 100 non malware/ clean files. 
+We have intermediate steps as well for the purpose of evaluation. Kindly don't change folder names. 
+After running the program you will get a final csv as well as individual frequency count of each file. 
+

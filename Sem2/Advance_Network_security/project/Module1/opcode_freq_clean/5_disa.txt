@@ -1,0 +1,7 @@
+1 lock
+2 repz
+2 (bad)
+2 add
+1 adc
+1 rol
+1 clean

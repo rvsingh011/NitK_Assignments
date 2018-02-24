@@ -1,0 +1,6 @@
+1 nop
+1 (bad)
+1 sarl
+4 add
+1 xchg
+1 clean

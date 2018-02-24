@@ -1,0 +1,9 @@
+lock
+repz
+(bad)
+add
+adc
+repz
+(bad)
+add
+rol

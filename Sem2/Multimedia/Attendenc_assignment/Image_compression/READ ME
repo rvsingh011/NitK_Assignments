@@ -1,0 +1,2 @@
+In this assignment we want to compression the image by diciding every pixel with some normalization value and then convert it to run length encoding. 
+Tools - jupyter notebook ( anaconda)
