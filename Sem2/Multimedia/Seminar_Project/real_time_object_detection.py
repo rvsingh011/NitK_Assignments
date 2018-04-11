@@ -53,7 +53,7 @@ def send_sms(counter_value):
 		body = "Bus Gone At {}".format(datetime.datetime.now())
 	else:
 		body = "Bus arrived at {}".format(datetime.datetime.now())
-	client.messages.create(to="+919023448448",
+	client.messages.create(to="+919427967589",
 						   from_="+12564376959",
 						   body=body)
 	return -1

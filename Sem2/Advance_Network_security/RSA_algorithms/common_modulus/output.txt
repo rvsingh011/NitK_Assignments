@@ -1,0 +1,266 @@
+Enter the value of N
+143
+Enter the value of e
+11
+Enter the value of e2
+13
+Enter the value of c1
+73
+Enter the value of c2
+57
+
+The value of phi_n is120
+The message is 18
+The value of d1 and d2 is11 37
+The value of x and y is6 -5Enter the value of N
+221
+Enter the value of e
+11
+Enter the value of e2
+23
+Enter the value of c1
+49
+Enter the value of c2
+36
+
+The value of phi_n is192
+The message is 43
+The value of d1 and d2 is35 167
+The value of x and y is-2 1Enter the value of N
+1517
+Enter the value of e
+17
+Enter the value of e2
+19
+Enter the value of c1
+91
+Enter the value of c2
+1467
+
+The value of phi_n is1440
+The message is 50
+The value of d1 and d2 is593 379
+The value of x and y is9 -8Enter the value of N
+2021
+Enter the value of e
+71
+Enter the value of e2
+5
+Enter the value of c1
+134
+Enter the value of c2
+1517
+
+The value of phi_n is1932
+The message is 30
+The value of d1 and d2 is1415 773
+The value of x and y is1 -14Enter the value of N
+143
+Enter the value of e
+103
+Enter the value of e2
+11
+Enter the value of c1
+83
+Enter the value of c2
+96
+
+The value of phi_n is120
+The message is 8
+The value of d1 and d2 is7 11
+The value of x and y is3 -28Enter the value of N
+143
+Enter the value of e
+11
+Enter the value of e2
+13
+Enter the value of c1
+73
+Enter the value of c2
+57
+
+The value of phi_n is120
+The message is 18
+The value of d1 and d2 is11 37
+The value of x and y is6 -5Enter the value of N
+143
+Enter the value of e
+103
+Enter the value of e2
+11
+Enter the value of c1
+83
+Enter the value of c2
+96
+
+The value of phi_n is120
+The message is 8
+The value of d1 and d2 is7 11
+The value of x and y is3 -28Enter the value of N
+1517
+Enter the value of e
+17
+Enter the value of e2
+19
+Enter the value of c1
+91
+Enter the value of c2
+1467
+
+The value of phi_n is1440
+The message is 50
+The value of d1 and d2 is593 379
+The value of x and y is9 -8Enter the value of N
+143
+Enter the value of e
+11
+Enter the value of e2
+13
+Enter the value of c1
+73
+Enter the value of c2
+57
+
+The value of phi_n is120
+The message is 18
+The value of d1 and d2 is11 37
+The value of x and y is6 -5Enter the value of N
+21
+Enter the value of e
+Enter the value of N
+221
+Enter the value of e
+11
+Enter the value of e2
+23
+Enter the value of c1
+49
+Enter the value of c2
+36
+
+The value of phi_n is192
+The message is 43
+The value of d1 and d2 is35 167
+The value of x and y is-2 1Enter the value of N
+1517
+Enter the value of e
+17
+Enter the value of e2
+19
+Enter the value of c1
+91
+Enter the value of c2
+1467
+
+The value of phi_n is1440
+The message is 50
+The value of d1 and d2 is593 379
+The value of x and y is9 -8Enter the value of N
+2021
+Enter the value of e
+71
+Enter the value of e2
+5
+Enter the value of c1
+134
+Enter the value of c2
+1517
+
+The value of phi_n is1932
+The message is 30
+The value of d1 and d2 is1415 773
+The value of x and y is1 -14Enter the value of N
+143
+Enter the value of e
+103
+Enter the value of e2
+11
+Enter the value of c1
+83
+Enter the value of c2
+96
+
+The value of phi_n is120
+The message is 8
+The value of d1 and d2 is7 11
+The value of x and y is3 -28Enter the value of N
+Enter the value of N
+143
+Enter the value of e
+11
+Enter the value of e2
+13
+Enter the value of c1
+73
+Enter the value of c2
+57
+
+The value of phi_n is120
+The message is 18
+The value of d1 and d2 is11 37
+The value of x and y is6 -5Enter the value of N
+221
+Enter the value of e
+11
+Enter the value of e2
+23
+Enter the value of c1
+49
+Enter the value of c2
+36
+
+The value of phi_n is192
+The message is 43
+The value of d1 and d2 is35 167
+The value of x and y is-2 1Enter the value of N
+1517
+Enter the value of e
+17
+Enter the value of e2
+19
+Enter the value of c1
+91
+Enter the value of c2
+1467
+
+The value of phi_n is1440
+The message is 50
+The value of d1 and d2 is593 379
+The value of x and y is9 -8Enter the value of N
+2021
+Enter the value of e
+71
+Enter the value of e2
+5
+Enter the value of c1
+134
+Enter the value of c2
+1517
+
+The value of phi_n is1932
+The message is 30
+The value of d1 and d2 is1415 773
+The value of x and y is1 -14Enter the value of N
+143
+Enter the value of e
+103
+Enter the value of e2
+11
+Enter the value of c1
+83
+Enter the value of c2
+96
+
+The value of phi_n is120
+The message is 8
+The value of d1 and d2 is7 11
+The value of x and y is3 -28Enter the value of N
+221
+Enter the value of e
+5
+Enter the value of e2
+Enter the value of N
+221
+Enter the value of e
+5
+Enter the value of e2

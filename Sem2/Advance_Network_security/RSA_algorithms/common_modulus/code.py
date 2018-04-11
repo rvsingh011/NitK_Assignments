@@ -142,4 +142,3 @@ if __name__ == "__main__":
 		f.write(str(c2))
 		f.write("\n")
 		obj = Common_modulus(e1, e2, N, c1, c2, f)
-
